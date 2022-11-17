@@ -1,11 +1,16 @@
-import React, { useContext } from 'react';
-import TodoContext from '../context/Todo';
+import React, { useState } from 'react';
+
 
 
 function Main() {
     // test
-    const { task, tasks, isForm } = useContext(TodoContext);
+    const [ isForm, setForm ] = useState(false);
+    const [ task, setTask ] = useState({});
+    const [ tasks, setTasks ] = useState([]);
+
+    // const { task, tasks, isForm, handleTask, handleTasks} = useContext( TodoContext );
     const clickHandler = () => {
+        // handleTasks()
         setForm(!isForm)
         if(isForm){
             setTasks((prev) => [...prev, task])
@@ -29,7 +34,7 @@ function Main() {
         
         
         { isForm && <form>
-            <p>{task.name}</p>
+            {/* <p>{task.name}</p> */}
             <input type="text" placeholder="Add a Task" onChange={handleInput} value={task.name} name="name"></input>
         </form>}
         <button onClick={clickHandler}>{isForm? `Done` : `+ Add a Task`}</button>
