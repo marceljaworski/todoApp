@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <div>header</div>
+    <header><Link to="/">Main</Link></header>
   )
 }
 
