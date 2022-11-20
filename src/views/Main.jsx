@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Tasks from '../components/Tasks'
 
 
@@ -8,13 +8,18 @@ function Main() {
     const [ task, setTask ] = useState({});
     const [ tasks, setTasks ] = useState([]);
 
-    const clickHandler = () => {
-        // handleTasks()
+    const clickHandler = (event) => {
+        event.preventDefault()
         setForm(!isForm)
         if(isForm){
             setTasks((prev) => [task, ...prev ])
         }
     }
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(tasks))
+        setTask({})
+    }, [tasks])
+    
     const handleInput = (event) => {
         setTask({
             ...task,
