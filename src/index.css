@@ -31,28 +31,24 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-/* .main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-ul {
-  width: 300px;
+.main {
+  padding-left: 1rem;
 }
+/* 
 form {
   margin-bottom: 0.5rem;
-}
+} */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 .tasks {
-  width: 300px;
-  height: 300px;
+  flex-wrap: wrap;
+  
 }
 button {
   color: aliceblue;
-  width: 9rem;
+  /* width: 8rem; */
   border-radius: 8px;
   border: 1px solid cornflowerblue;
   padding: 0.6em 1em;
@@ -62,6 +58,8 @@ button {
   background-color: #212121;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 0.5rem;
+  /* margin-block-start: 0.5rem; */
 }
 button:hover {
   border-color: #646cff;
@@ -70,4 +68,25 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.red {
+  color: red;
+}
+.yellow {
+  color: yellow;
+}
+.green {
+  color: green;
+}
 
+article {
+  padding: 0rem 0.5rem 0.5rem 0.5rem;
+  width: 250px;
+  margin: 0.3rem;
+  padding-top: 0.5rem;
+  display: inline-block;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+}

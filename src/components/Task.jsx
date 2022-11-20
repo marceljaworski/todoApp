@@ -12,8 +12,8 @@ function Task({ task, index, handleDelete }) {
   return (
     <article key={index}>
         <h2>{(task.id) + 1}. {task.name}</h2>
-        <button onClick={clickHandler}>{done? "done": "pending"}</button>
-        {done && <button onClick={deleteHandle}>delete</button>}
+        <button className={done?"yellow":"green"} onClick={clickHandler}>{done? "pending": "done"}</button>
+        {done && <button className='red' onClick={deleteHandle}>delete</button>}
     </article>
   )
 }

@@ -46,8 +46,8 @@ function Main() {
             <input type="text" placeholder="Add a Task" onChange={handleInput} value={task.name} name="name"></input>
         </form>}
         
-        <button onClick={clickHandler}>{isForm? `Done` : `+ Add a Task`}</button>
-        <button onClick={handleReset}>reset</button>
+        <button onClick={clickHandler}>{isForm? `Add` : `+ Add a Task`}</button>
+        { tasks.length>0 && <button className='red' onClick={handleReset}>reset</button>}
         
             <Tasks tasks={ tasks } handleDelete= {handleDelete} />
     </main>
