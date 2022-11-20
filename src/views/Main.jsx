@@ -12,7 +12,7 @@ function Main() {
         event.preventDefault()
         setForm(!isForm)
         if(isForm){
-            setTasks((prev) => [task, ...prev ])
+            setTasks((prev) => [ ...prev, task ])
         }
     }
     useEffect(() => {
@@ -24,8 +24,13 @@ function Main() {
         setTask({
             ...task,
             [event.target.name]: event.target.value,
+            id : tasks.length,
         });
     }
+    // const removeTask = (event) => {
+    //     if (event.target.matches("article")) event.target.remove();
+    // }
+ 
   return (
     <main className='main'>
         
@@ -38,7 +43,7 @@ function Main() {
         
         <button onClick={clickHandler}>{isForm? `Done` : `+ Add a Task`}</button>
         
-            <Tasks tasks={tasks} />
+            <Tasks tasks={ tasks } />
     </main>
   )
 }

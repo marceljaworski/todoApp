@@ -1,12 +1,12 @@
 import React from 'react'
-
+import Task from './Task'
 function Tasks({ tasks }) {
+    
   return (
     <div className='tasks'>
         { tasks.map((task, index) => (
-                <article key={index}>
-                    <h2 key={index}>{task.name}</h2>
-                </article>
+                <Task task={task} key={index} />
+               
             ))}
     </div>
   )
