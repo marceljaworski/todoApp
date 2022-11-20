@@ -6,7 +6,7 @@ import Tasks from '../components/Tasks'
 function Main() {
     const [ isForm, setForm ] = useState(false);
     const [ task, setTask ] = useState({});
-    const [ tasks, setTasks ] = useState([]);
+    const [ tasks, setTasks ] = useState(JSON.parse(localStorage.getItem("todos")) || []);
 
     const clickHandler = (event) => {
         event.preventDefault()
@@ -27,10 +27,10 @@ function Main() {
             id : tasks.length,
         });
     }
-    // const removeTask = (event) => {
-    //     if (event.target.matches("article")) event.target.remove();
-    // }
- 
+    const handleReset = () => {
+        setTasks([])
+        localStorage.removeItem("todos")
+    }
   return (
     <main className='main'>
         
@@ -42,6 +42,7 @@ function Main() {
         </form>}
         
         <button onClick={clickHandler}>{isForm? `Done` : `+ Add a Task`}</button>
+        <button onClick={handleReset}>reset</button>
         
             <Tasks tasks={ tasks } />
     </main>
