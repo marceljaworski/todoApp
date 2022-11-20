@@ -20,37 +20,45 @@ function Main() {
         setTask({})
     }, [tasks])
     
+    
     const handleInput = (event) => {
         setTask({
             ...task,
             [event.target.name]: event.target.value,
             id : tasks.length,
-            done: false,
+            "done": false,
         });
     }
     const handleReset = () => {
         setTasks([])
         localStorage.removeItem("todos")
     }
-    // console.log(tasks[1].id)
     const handleDelete = (taskId) => {
         const _tasks = tasks.filter( task => task.id !== taskId)
         setTasks( _tasks)
     }
+    const toggle = (taskId, done) => {
+        const _tasks = [...tasks]
+        _tasks[taskId].done = !done
+    
+        setTasks(_tasks)
+    } 
   return (
     <main className='main'>
         
-            <h1>Todo</h1>
+        <h1>Todo</h1>
             
-            { isForm && <form>
-            {/* <p>{task.name}</p> */}
+        { isForm && <form>
+        
             <input type="text" placeholder="Add a Task" onChange={handleInput} value={task.name} name="name"></input>
         </form>}
+        <>
+            <button onClick={clickHandler}>{isForm? `Add` : `+ Add a Task`}</button>
+            { tasks.length>0 && <button className='red' onClick={handleReset}>reset</button>}
+        </>
         
-        <button onClick={clickHandler}>{isForm? `Add` : `+ Add a Task`}</button>
-        { tasks.length>0 && <button className='red' onClick={handleReset}>reset</button>}
-        
-            <Tasks tasks={ tasks } handleDelete= {handleDelete} />
+        <Tasks tasks={ tasks } handleDelete={handleDelete} toggle={toggle} />
+    
     </main>
   )
 }

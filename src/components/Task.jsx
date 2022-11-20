@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 
-function Task({ task, index, handleDelete }) {
-    const [ done, setDone ] = useState(false)
-    const clickHandler = (event) => {
-        event.preventDefault();
+function Task({ task, index, handleDelete, toggle }) {
+    const [ done, setDone ] = useState(task.done)
+    const clickHandler = () => {
+        // event.preventDefault();
         setDone(!done)
+        toggle(task.id, done)
     } 
+   
     const deleteHandle = () => {
         handleDelete(task.id)  
     }
