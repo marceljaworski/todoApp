@@ -13,7 +13,7 @@ function Task({ task, index, handleDelete }) {
     <article key={index}>
         <h2>{(task.id) + 1}. {task.name}</h2>
         <button onClick={clickHandler}>{done? "done": "pending"}</button>
-        <button onClick={deleteHandle}>delete</button>
+        {done && <button onClick={deleteHandle}>delete</button>}
     </article>
   )
 }
