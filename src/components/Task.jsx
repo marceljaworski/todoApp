@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 
-function Task({ task, index }) {
+function Task({ task, index, handleDelete }) {
     const [ done, setDone ] = useState(false)
     const clickHandler = (event) => {
         event.preventDefault();
         setDone(!done)
     } 
-    
+    const deleteHandle = () => {
+        handleDelete(task.id)  
+    }
   return (
     <article key={index}>
         <h2>{(task.id) + 1}. {task.name}</h2>
         <button onClick={clickHandler}>{done? "done": "pending"}</button>
+        <button onClick={deleteHandle}>delete</button>
     </article>
   )
 }

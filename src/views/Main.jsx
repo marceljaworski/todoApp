@@ -31,6 +31,11 @@ function Main() {
         setTasks([])
         localStorage.removeItem("todos")
     }
+    // console.log(tasks[1].id)
+    const handleDelete = (taskId) => {
+        const _tasks = tasks.filter( task => task.id !== taskId)
+        setTasks( _tasks)
+    }
   return (
     <main className='main'>
         
@@ -44,7 +49,7 @@ function Main() {
         <button onClick={clickHandler}>{isForm? `Done` : `+ Add a Task`}</button>
         <button onClick={handleReset}>reset</button>
         
-            <Tasks tasks={ tasks } />
+            <Tasks tasks={ tasks } handleDelete= {handleDelete} />
     </main>
   )
 }
