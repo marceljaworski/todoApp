@@ -25,6 +25,7 @@ function Main() {
             ...task,
             [event.target.name]: event.target.value,
             id : tasks.length,
+            done: false,
         });
     }
     const handleReset = () => {
